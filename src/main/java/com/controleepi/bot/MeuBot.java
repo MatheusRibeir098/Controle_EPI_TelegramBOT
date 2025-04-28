@@ -1,5 +1,8 @@
 package com.controleepi.bot;
 
+import com.controleepi.comandos.CadastrarEPI;
+import com.controleepi.comandos.ListarEPI;
+import com.controleepi.model.EPI;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -30,7 +33,7 @@ public class MeuBot extends TelegramLongPollingBot {
      */
     @Override
     public String getBotUsername() {
-        return "[USERNAMEBOT]"; // Substitua pelo seu username real
+        return "@Controle_de_EPI_bot"; // Substitua pelo seu username real
     }
 
     /**
@@ -38,7 +41,7 @@ public class MeuBot extends TelegramLongPollingBot {
      */
     @Override
     public String getBotToken() {
-        return "[TOKEN]"; // Coloque o token real aqui
+        return "7631605165:AAGcUmeqLvQWiPsVhHNRS52-rrl_El_AcCE"; // Coloque o token real aqui
     }
 
     /**

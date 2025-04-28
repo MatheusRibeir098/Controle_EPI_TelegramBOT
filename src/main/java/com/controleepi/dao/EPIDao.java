@@ -1,5 +1,8 @@
 package com.controleepi.dao;
 
+import com.controleepi.database.Conexao;
+import com.controleepi.model.EPI;
+
 import java.sql.*;
 import java.util.ArrayList;
 

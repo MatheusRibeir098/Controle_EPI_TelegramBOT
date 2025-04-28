@@ -1,5 +1,8 @@
 package com.controleepi.comandos;
 
+import com.controleepi.database.Conexao;
+import com.controleepi.model.EPI;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

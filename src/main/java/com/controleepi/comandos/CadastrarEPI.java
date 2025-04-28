@@ -1,5 +1,8 @@
 package com.controleepi.comandos;
 
+import com.controleepi.dao.EPIDao;
+import com.controleepi.model.EPI;
+
 import java.util.HashMap;
 import java.util.Map;
 
