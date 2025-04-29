@@ -33,7 +33,7 @@ public class MeuBot extends TelegramLongPollingBot {
      */
     @Override
     public String getBotUsername() {
-        return "@Controle_de_EPI_bot"; // Substitua pelo seu username real
+        return ConexaoBot.getUsernameBot(); // Substitua pelo seu username real
     }
 
     /**
@@ -41,7 +41,7 @@ public class MeuBot extends TelegramLongPollingBot {
      */
     @Override
     public String getBotToken() {
-        return "7631605165:AAGcUmeqLvQWiPsVhHNRS52-rrl_El_AcCE"; // Coloque o token real aqui
+        return ConexaoBot.getTokenBot(); // Coloque o token real aqui
     }
 
     /**
@@ -53,18 +53,32 @@ public class MeuBot extends TelegramLongPollingBot {
             String chatId = update.getMessage().getChatId().toString();
             String texto = update.getMessage().getText();
 
-            String resposta = cadastrarEPI.processarMensagem(chatId, texto);
-
-            if (resposta != null) {
-                enviarMensagem(chatId, resposta);
-
-            } else if (texto.equals("/listar")) {
-                ListarEPI listarEPI = new ListarEPI();
-                String lista = listarEPI.listarEPIs().toString();
-                enviarMensagem(chatId, lista);
-
-            } else {
-                enviarMensagem(chatId, "👋 Olá! Digite /cadastrar para registrar uma nova EPI ou /listar para listar.");
+            switch (texto) {
+                case "/listar" -> {
+                    ListarEPI listarEPI = new ListarEPI();
+                    String lista = listarEPI.listarEPIs().toString();
+                    enviarMensagem(chatId, lista);
+                }
+                case "/cadastrar" -> {
+                    String resposta = cadastrarEPI.processarMensagem(chatId, texto);
+                    if (resposta != null) {
+                        enviarMensagem(chatId, resposta);
+                    }
+                }
+                case "/editar" -> {
+                    enviarMensagem(chatId, "função em Desenvolvimento");
+                }
+                case "/remover" -> {
+                    enviarMensagem(chatId, "Função em Desenvolvimento");
+                }
+                default -> {
+                    String resposta = cadastrarEPI.processarMensagem(chatId, texto);
+                    if (resposta != null) {
+                        enviarMensagem(chatId, resposta);
+                    } else {
+                        enviarMensagem(chatId, "👋 Olá! Digite /cadastrar para registrar uma nova EPI ou /listar para listar.");
+                    }
+                }
             }
         }
     }
